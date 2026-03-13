@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-from datatime import datatime
+from datetime import datetime
 import os
 
 
@@ -26,7 +26,7 @@ def scrape_website(url):
         data = {
             "url": url,
             "title": soup.title.string if soup.title else "No title",
-            "timestamp": datatime.now().isoformat(),
+            "timestamp": datetime.now().isoformat(),
             "headings": [
                 h.get_text().strip()
                 for h in soup.find_all(
@@ -38,7 +38,7 @@ def scrape_website(url):
                 )
             ][:10],
             "links_count": len(soup.find_all("a")),
-            "image_count": len(soup.find_all("img")),
+            "images_count": len(soup.find_all("img")),
             "paragraphs": [p.get_text().strip() for p in soup.find_all("p")[:5]],
         }
 
@@ -81,7 +81,7 @@ if __name__ == "__main__":
         # Mostrar resumen
         print("\n📊 Resumen:")
         print(f"   Título: {data['title']}")
-        print(f"   Links: {data['link_count']}")
+        print(f"   Links: {data['links_count']}")
         print(f"   Imágenes: {data['images_count']}")
         print(f"   Headings: {len(data['headings'])}")
     else:

@@ -10,4 +10,4 @@ services:
       - ./data:/app/data
       # Montar código para desarrollo (cambios en vivo)
       - ./scraper.py:/app/scraper.py
-    restart: "no"  # No reiniciar automáticamente
+    restart: "no" # No reiniciar automáticamente
