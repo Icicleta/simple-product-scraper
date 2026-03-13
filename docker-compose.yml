@@ -1,0 +1,16 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  scraper:
+    build: .
+    container_name: web-scraper
+    environment:
+      # Cambiar esta URL para scrapear diferentes sitios
+      - TARGET_URL=https://quotes.toscrape.com
+    volumes:
+      # Montar carpeta data para persistir resultados
+      - ./data:/app/data
+      # Montar código para desarrollo (cambios en vivo)
+      - ./scraper.py:/app/scraper.py
+    restart: "no"  # No reiniciar automáticamente
