@@ -20,6 +20,36 @@ docker-compose up --build
 cat data/output.json
 ```
 
+## 🔧 Using Make Commands
+
+This project includes a Makefile for common tasks:
+```bash
+# Format code with Black
+make format
+
+# Run the scraper
+make run
+
+# Build Docker image
+make build
+
+# Clean up Docker containers and images
+make clean
+
+# Show available commands
+make help
+```
+
+### Available Commands
+
+- `make format` - Format Python code using Black
+- `make run` - Run the scraper with docker-compose
+- `make build` - Build the Docker image
+- `make clean` - Remove containers and clean Docker system
+- `make help` - Display available commands
+
+**Note:** `make format` requires Docker and will install Black temporarily in a container.
+
 ## Usage
 ```bash
 # Custom URL
